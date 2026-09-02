@@ -7,6 +7,10 @@ using Constructor = void (*)(void*);
 using GetRotationSpeed = int (*)(void*, unsigned short*);
 using SetRotation = int (*)(void*);
 using SetRotationVerified = bool (*)(void*);
+using WriteFanControlBit4 = int (*)(void*, unsigned char);
+using ReadFanControlStatus = int (*)(void*, unsigned char*);
+using IsType3SupportedModel = int (*)();
+using WriteToEC = int (*)(void*, unsigned short, unsigned char);
 
 enum class FanReadResult {
     Error,
@@ -14,6 +18,13 @@ enum class FanReadResult {
     Success
 };
 std::ostream& operator<<(std::ostream& os, FanReadResult result);
+
+enum class FanControlResult {
+    ReadFail,
+    WriteFail,
+    Success
+};
+std::ostream& operator<<(std::ostream& os, FanControlResult result);
 
 
 // RAII wrapper around Lenovo's module_fan.so.
@@ -39,6 +50,9 @@ public:
     int setHigh() const;
     bool setFull() const;
     bool setAuto() const;
+    FanControlResult takeControl() const;
+    //bool FanModule::isType3SupportedModel() const;
+    int writeEC(unsigned short address, unsigned char value) const;
 
 private:
     void* m_lib = nullptr;
@@ -54,6 +68,10 @@ private:
     SetRotation setHighFn = nullptr;
     SetRotationVerified setFullFn = nullptr;
     SetRotationVerified setAutoFn = nullptr;
+    WriteFanControlBit4 writeFanControlBit4Fn = nullptr;
+    ReadFanControlStatus readFanControlStatusFn = nullptr;
+    IsType3SupportedModel isType3SupportedModelFn = nullptr;
+    WriteToEC writeToECFn = nullptr;
 
     // Storage for the EmbeddedControllerComponentLinux instance.
     // Size/alignment taken from the module's actual object layout.

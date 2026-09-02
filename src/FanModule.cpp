@@ -56,9 +56,22 @@ FanModule::FanModule()
 
     setAutoFn = reinterpret_cast<SetRotationVerified>(
         dlsym(m_lib, "_ZN27EmbeddedControllerComponent15SetAutoRotationEv"));
+    
+    writeFanControlBit4Fn = reinterpret_cast<WriteFanControlBit4>(
+        dlsym(m_lib, "_ZN27EmbeddedControllerComponent19WriteFanControlBit4Eh"));
+
+    readFanControlStatusFn = reinterpret_cast<ReadFanControlStatus>(
+        dlsym(m_lib, "_ZN27EmbeddedControllerComponent20ReadFanControlStatusERh"));
+
+    isType3SupportedModelFn = reinterpret_cast<IsType3SupportedModel>(
+        dlsym(m_lib, "_ZN19FanComponentManager21IsType3SupportedModelEv"));
+
+    writeToECFn = reinterpret_cast<WriteToEC>(
+        dlsym(m_lib, "_ZN27EmbeddedControllerComponent9WriteToECEth"));
 
     if (!isControllableFn || !ctorFn || !dtorFn || !getRPMFn ||
-        !setSlowFn || !setMediumFn || !setHighFn || !setFullFn || !setAutoFn) {
+        !setSlowFn || !setMediumFn || !setHighFn ||
+        !setFullFn || !setAutoFn || !writeFanControlBit4Fn) {
         const char* err = dlerror();
         m_error = err ? err : "dlsym: unknown symbol resolution failure";
         dlclose(m_lib);
@@ -143,4 +156,50 @@ bool FanModule::setFull() const
 bool FanModule::setAuto() const
 {
     return setAutoFn(object());
+}
+
+/*
+bool FanModule::isType3SupportedModel() const 
+{
+    return (isType3SupportedModelFn());
+}
+*/
+
+FanControlResult FanModule::takeControl() const
+{
+    if (!isType3SupportedModelFn()) {
+        return writeEC(0x2F, 0x00)
+            ? FanControlResult::Success
+            : FanControlResult::WriteFail;
+    }
+
+    unsigned char status = 0;
+
+    if (!readFanControlStatusFn(object(), &status))
+        return FanControlResult::ReadFail;
+
+    return writeFanControlBit4Fn(object(), status | 0x10)
+        ? FanControlResult::Success
+        : FanControlResult::WriteFail;
+}
+
+std::ostream& operator<<(std::ostream& os, FanControlResult result)
+{
+    switch (result) {
+        case FanControlResult::ReadFail:
+            return os << "EC read failure";
+
+        case FanControlResult::WriteFail:
+            return os << "Write failure";
+
+        case FanControlResult::Success:
+            return os << "Success";
+    }
+
+    return os << "Unknown";
+}
+
+int FanModule::writeEC(unsigned short address, unsigned char value) const
+{
+    return writeToECFn(object(), address, value);
 }
