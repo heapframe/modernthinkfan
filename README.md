@@ -49,7 +49,7 @@ ModernThinkFan requires:
 The Lenovo libraries and database must be present in the program's working directory:
 
 ```text
-lenovofan
+modernthinkfan
 module_fan.so
 libsal.so
 fan_database.sqlite
@@ -104,7 +104,10 @@ The X260 is the model selected on the download page, although the `fan_database.
 The ISO can be extracted with:
 
 ```bash
-binwalk -Me ldiag_4.64.5_linux.iso
+binwalk -e ldiag_4.64.5_linux.iso
+cd _ldiag_4.64.5_linux.iso.extracted/iso-root/live
+unsquashfs -d ldiag filesystem.squashfs opt/lenovo/ldiag
+cd ldiag/opt/lenovo/ldiag
 ```
 
 The exact versions of `module_fan.so` and `libsal.so` matter because ModernThinkFan resolves Lenovo's C++ functions using their mangled symbol names. Different versions of the module may therefore require the symbol mappings to be updated.
@@ -122,8 +125,8 @@ The CSV is **not required for program execution and is not a substitute**. The a
 Clone the repository and enter the project directory:
 
 ```bash
-git clone <repository-url>
-cd lenovofan
+git clone https://github.com/heapframe/modernthinkfan
+cd modernthinkfan
 ```
 
 Install the build dependencies:
@@ -150,23 +153,23 @@ cmake --build build
 The resulting binary will be:
 
 ```text
-build/lenovofan
+build/modernthinkfan
 ```
 
 For convenience, you can copy it alongside the Lenovo runtime files:
 
 ```bash
-cp build/lenovofan .
+cp build/modernthinkfan .
 ```
 
 The directory should then look approximately like:
 
 ```text
-lenovofan
+modernthinkfan
 ├── fan_database.sqlite
 ├── libsal.so
 ├── module_fan.so
-└── lenovofan
+└── modernthinkfan
 ```
 
 ## Usage
@@ -174,9 +177,9 @@ lenovofan
 Display the help menu:
 
 ```text
-➜  lenovofan git:(master) ✗ sudo ./lenovofan -h
+➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -h
 
-  ./lenovofan {OPTIONS}
+  ./modernthinkfan {OPTIONS}
 
     Modern Thinkpad Fan Control
 
@@ -192,7 +195,7 @@ Display the help menu:
 ### Read fan speed
 
 ```text
-➜  lenovofan git:(master) ✗ sudo ./lenovofan -r
+➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -r
 
 battery_manufacturer_date: 2024/10/26
 Fan controllable: 1
@@ -203,7 +206,7 @@ RPM: 0
 ### Set full speed
 
 ```text
-➜  lenovofan git:(master) ✗ sudo ./lenovofan -s full
+➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -s full
 
 battery_manufacturer_date: 2024/10/26
 ```
@@ -211,7 +214,7 @@ battery_manufacturer_date: 2024/10/26
 The fan can then be checked again:
 
 ```text
-➜  lenovofan git:(master) ✗ sudo ./lenovofan -r
+➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -r
 
 battery_manufacturer_date: 2024/10/26
 Fan controllable: 1
@@ -222,7 +225,7 @@ RPM: 8064
 ### Return to automatic control
 
 ```text
-➜  lenovofan git:(master) ✗ sudo ./lenovofan -s auto
+➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -s auto
 
 battery_manufacturer_date: 2024/10/26
 ```
@@ -230,7 +233,7 @@ battery_manufacturer_date: 2024/10/26
 Then:
 
 ```text
-➜  lenovofan git:(master) ✗ sudo ./lenovofan -r
+➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -r
 
 battery_manufacturer_date: 2024/10/26
 Fan controllable: 1
