@@ -1,3 +1,4 @@
 /build/
 libsal.so
 module_fan.so
+fan_database.sqlite
