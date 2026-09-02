@@ -114,6 +114,8 @@ The exact versions of `module_fan.so` and `libsal.so` matter because ModernThink
 
 ## Supported devices
 
+ModernThinkFan does not guarantee support for every ThinkPad.
+
 A CSV version of Lenovo's fan database is included as [supportedDevices.csv](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv).
 
 This is provided as a convenient way to check whether your ThinkPad appears in Lenovo's database before running ModernThinkFan.
