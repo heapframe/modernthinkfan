@@ -8,6 +8,14 @@ using GetRotationSpeed = int (*)(void*, unsigned short*);
 using SetRotation = int (*)(void*);
 using SetRotationVerified = bool (*)(void*);
 
+enum class FanReadResult {
+    Error,
+    Unavailable,
+    Success
+};
+std::ostream& operator<<(std::ostream& os, FanReadResult result);
+
+
 // RAII wrapper around Lenovo's module_fan.so.
 // Loads the library, resolves the mangled symbols and manages the
 // lifetime of an EmbeddedControllerComponentLinux instance.
@@ -24,7 +32,7 @@ public:
     const std::string& error() const { return m_error; }
 
     bool isControllable() const;
-    int getRotationSpeed(unsigned short& rpm) const;
+    FanReadResult getRotationSpeed(unsigned short& rpm) const;
 
     int setSlow() const;
     int setMedium() const;

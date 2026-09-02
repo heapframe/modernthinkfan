@@ -1,5 +1,5 @@
 #include "FanModule.h"
-
+#include <ostream>
 #include <dlfcn.h>
 
 namespace
@@ -85,10 +85,39 @@ bool FanModule::isControllable() const
     return isControllableFn() != 0;
 }
 
-int FanModule::getRotationSpeed(unsigned short& rpm) const
+FanReadResult FanModule::getRotationSpeed(unsigned short& rpm) const
 {
     rpm = 0;
-    return getRPMFn(object(), &rpm);
+    const int result = getRPMFn(object(), &rpm);
+    switch (result) {
+        case 0:
+            return FanReadResult::Error;
+
+        case 1:
+            return FanReadResult::Unavailable;
+
+        case 2:
+            return FanReadResult::Success;
+
+        default:
+            return FanReadResult::Error;
+    }
+}
+
+std::ostream& operator<<(std::ostream& os, FanReadResult result)
+{
+    switch (result) {
+        case FanReadResult::Error:
+            return os << "EC read failure";
+
+        case FanReadResult::Unavailable:
+            return os << "RPM unavailable";
+
+        case FanReadResult::Success:
+            return os << "Success";
+    }
+
+    return os << "Unknown";
 }
 
 int FanModule::setSlow() const

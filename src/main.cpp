@@ -1,6 +1,9 @@
 #include <QCoreApplication>
 #include <iostream>
 #include <unistd.h>
+#include <ctime>
+#include <thread>
+#include <chrono>
 #include "args.hxx"
 #include "FanModule.h"
 
@@ -10,7 +13,9 @@ int main(int argc, char** argv)
     args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
 
     args::Flag readFan(parser, "read", "Read fan speed", {'r', "read"});
+    args::Flag streamFan(parser, "stream", "Repeatedly read fan speed", {"stream"});
     args::ValueFlag<std::string> setFan(parser, "preset", "Set Fan Speed [slow/med/high/full/auto]", {'s', "set"});
+    args::Flag iDontCare(parser, "iDontCare", "Ignore EC read failures & Try set fan speed anyways on unsupported models", {"iDontCare"});
 
     try
     {
@@ -50,15 +55,18 @@ int main(int argc, char** argv)
 
     if (readFan) {
         unsigned short rpm = 0;
-        int result = fan.getRotationSpeed(rpm);
+        FanReadResult result = fan.getRotationSpeed(rpm);
 
-        std::cout << "Fan controllable: " << fan.isControllable() << std::endl;
-        std::cout << "GetRotationSpeed result: " << result  << std::endl;
-        std::cout << "RPM: " << rpm << std::endl;
+        if (result != FanReadResult::Success){
+            std::cout << "GetRotationSpeed result: " << result  << std::endl;
+            
+        }else {
+            std::cout << "RPM: " << rpm << std::endl;
+        }
     }
 
     if (setFan) {
-        if (!fan.isControllable()) {
+        if (!fan.isControllable() && !iDontCare) {
             std::cerr << "Fan control is not supported on this model." << std::endl;
             return 1;
         }
@@ -78,6 +86,37 @@ int main(int argc, char** argv)
         }else {
             std::cerr << "Unknown fan setting: " << setting << std::endl;
             return 1;
+        }
+    }
+
+    if (streamFan) {
+        unsigned short rpm = 0;
+        while (true) {
+            unsigned short rpm = 0;
+
+            const auto now = std::chrono::system_clock::now();
+            const auto timestamp =
+                std::chrono::duration_cast<std::chrono::seconds>(
+                    now.time_since_epoch()
+                ).count();
+            
+            switch (fan.getRotationSpeed(rpm)) {
+                case FanReadResult::Success:
+                    std::cout << timestamp << " | RPM: " << rpm << std::endl;
+                    break;
+
+                case FanReadResult::Unavailable:
+                    std::cout << timestamp << " | " << FanReadResult::Unavailable << std::endl;
+                    break;
+
+                case FanReadResult::Error:
+                    std::cerr << timestamp << " | " << FanReadResult::Error << std::endl;
+                    if (!iDontCare)
+                        return 1;
+                    break;
+            }
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
 }
