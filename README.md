@@ -68,17 +68,12 @@ To compile ModernThinkFan, you need:
 - CMake
 - A C++ compiler with C++11 support
 - Qt 5 development headers
-- (args.hxx)[https://github.com/Taywee/args]
-
-args.hxx is a single-header C++ argument parsing library. ModernThinkFan uses it for its command-line interface. The header can either be installed through your system/package manager or copied directly into the project source tree.
 
 On Fedora:
 
 ```bash
 sudo dnf install cmake gcc-c++ qt5-qtbase-devel
 ```
-
-`args.hxx` is a header-only dependency and must be available to the compiler.
 
 ## Lenovo diagnostic files
 
@@ -116,7 +111,7 @@ The exact versions of `module_fan.so` and `libsal.so` matter because ModernThink
 
 ## Supported devices
 
-A CSV version of Lenovo's fan database is included as (supportedDevices.csv)[https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv].
+A CSV version of Lenovo's fan database is included as [supportedDevices.csv](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv).
 
 This is provided as a convenient way to check whether your ThinkPad appears in Lenovo's database before running ModernThinkFan.
 

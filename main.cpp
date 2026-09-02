@@ -2,7 +2,7 @@
 #include <iostream>
 #include <dlfcn.h>
 #include <unistd.h>
-#include <args.hxx>
+#include "args.hxx"
 
 using Fn = unsigned int (*)();
 using Constructor = void (*)(void*);
