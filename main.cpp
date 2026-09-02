@@ -8,6 +8,7 @@ using Fn = unsigned int (*)();
 using Constructor = void (*)(void*);
 using GetRotationSpeed = int (*)(void*, unsigned short*);
 using SetRotation = int (*)(void*);
+using SetRotationVerified = bool (*)(void*);
 
 int main(int argc, char** argv)
 {
@@ -15,7 +16,7 @@ int main(int argc, char** argv)
     args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
 
     args::Flag readFan(parser, "read", "Read fan speed", {'r', "read"});
-    args::ValueFlag<std::string> setFan(parser, "preset", "Set Fan Speed [high/full/auto]", {'s', "set"});
+    args::ValueFlag<std::string> setFan(parser, "preset", "Set Fan Speed [slow/med/high/full/auto]", {'s', "set"});
 
     try
     {
@@ -50,7 +51,7 @@ int main(int argc, char** argv)
     void* lib = dlopen("./module_fan.so", RTLD_NOW);
 
     if (!lib) {
-        std::cerr << dlerror() << '\n';
+        std::cerr << dlerror() << std::endl;
         return 1;
     }
 
@@ -60,6 +61,13 @@ int main(int argc, char** argv)
     2. Then search for it with:
         nm -D module_fan.so | grep 'FunctionYouWannaHook'
     3. Add it in here (though in the future this should be split up into multiple files)
+    
+    These are very dependent on the exact version of module_fan.so, although regenerating them shouldn't be too hard.
+    The below code uses these versions (sha256):
+    9ceea6f128dfe8208b6df00f21b27e7dc5b75bb6e66d6fa443e78f7f7e2b334b module_fan.so
+    ab2f3b8d9c187f4ad3630af080e53326373c27153506cf71de3b08d3bd55c03c  libsal.so
+
+    The exact libsal probably isn't too important but its a dependency of module_fan
     */
 
     auto isControllable =
@@ -71,34 +79,42 @@ int main(int argc, char** argv)
         dlsym(lib, "_ZN32EmbeddedControllerComponentLinuxC1Ev")
     );
 
+    auto dtor = reinterpret_cast<Constructor>(
+        dlsym(lib, "_ZN32EmbeddedControllerComponentLinuxD1Ev")
+    );
+
     auto getRPM = reinterpret_cast<GetRotationSpeed>(
         dlsym(lib, "_ZN27EmbeddedControllerComponent16GetRotationSpeedEPt")
     );
 
-    auto full = reinterpret_cast<SetRotation>(
-        dlsym(lib, "_ZN27EmbeddedControllerComponent15SetFullRotationEv")
+    auto setSlow = reinterpret_cast<SetRotation>(
+        dlsym(lib, "_ZN27EmbeddedControllerComponent15SetSlowRotationEv")
+    );
+
+    auto setMedium = reinterpret_cast<SetRotation>(
+        dlsym(lib, "_ZN27EmbeddedControllerComponent17SetMediumRotationEv")
     );
 
     auto setHigh = reinterpret_cast<SetRotation>(
         dlsym(lib, "_ZN27EmbeddedControllerComponent15SetHighRotationEv")
     );
 
-    auto setFull = reinterpret_cast<bool (*)(void*)>(
+    auto setFull = reinterpret_cast<SetRotationVerified>(
         dlsym(lib, "_ZN27EmbeddedControllerComponent15SetFullRotationEv")
     );
 
-    auto setAuto = reinterpret_cast<bool (*)(void*)>(
+    auto setAuto = reinterpret_cast<SetRotationVerified>(
         dlsym(lib, "_ZN27EmbeddedControllerComponent15SetAutoRotationEv")
     );
 
     if (!isControllable) {
-        std::cerr << "dlsym: " << dlerror() << '\n';
+        std::cerr << "dlsym: " << dlerror() << std::endl;
         return 1;
     }
 
 
-    if (!ctor || !getRPM || !full) {
-        std::cerr << "dlsym failed: " << dlerror() << '\n';
+    if (!ctor || !getRPM || !setFull) {
+        std::cerr << "dlsym failed: " << dlerror() << std::endl;
         return 1;
     }
 
@@ -110,22 +126,35 @@ int main(int argc, char** argv)
         unsigned short rpm = 0;
         int result = getRPM(object, &rpm);
 
-        std::cout << "Fan controllable: " << isControllable() << '\n';
-        std::cout << "GetRotationSpeed result: " << result << '\n';
-        std::cout << "RPM: " << rpm << '\n';
+        std::cout << "Fan controllable: " << isControllable() << std::endl;
+        std::cout << "GetRotationSpeed result: " << result  << std::endl;
+        std::cout << "RPM: " << rpm << std::endl;
     }
+    
     if (setFan) {
+        if (!isControllable()) {
+            std::cerr << "Fan control is not supported on this model." << std::endl;
+            return 1;
+        }
+
         std::string setting = args::get(setFan);
 
-        if (setting == "high") {
+        if (setting == "slow") {
+            setSlow(object);
+        }else if (setting == "med") {
+            setMedium(object);
+        }else if (setting == "high") {
             setHigh(object);
         }else if (setting == "full") {
             setFull(object);
-        } else {
-            std::cout << "setting to auto" << std::endl;
+        }else if (setting == "auto") {
             setAuto(object);
+        }else {
+            std::cerr << "Unknown fan setting: " << setting << std::endl;
+            return 1;
         }
     }
 
+    dtor(object);
     dlclose(lib);
 }
