@@ -1,0 +1,25 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "GCC 15.2.1 x86_64-pc-linux-gnu",
+            "displayName": "GCC 15.2.1 x86_64-pc-linux-gnu",
+            "description": "Using CXX compiler: /usr/bin/g++",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "GCC 15.2.1 x86_64-pc-linux-gnu",
+            "displayName": "GCC 15.2.1 x86_64-pc-linux-gnu",
+            "configurePreset": "GCC 15.2.1 x86_64-pc-linux-gnu"
+        }
+    ]
+}
