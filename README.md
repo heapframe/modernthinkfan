@@ -1,6 +1,6 @@
 # ModernThinkFan
 
-ModernThinkFan is a Linux fan-control utility for supported Lenovo ThinkPads.
+ModernThinkFan is a Linux fan-control utility for [supported Lenovo ThinkPads.](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv)
 
 Instead of relying on Linux ACPI interfaces or hoping that the firmware exposes a usable fan-control interface, ModernThinkFan reuses Lenovo's own fan-control implementation from their Linux diagnostic software.
 
