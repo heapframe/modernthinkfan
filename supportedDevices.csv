@@ -1,0 +1,413 @@
+id,eeprom,speed_mode,fan_qtd,speed_control,project_type,bios_id
+1,ThinkPad T430,Hexadecimal,Single Fan,1,2,G1
+2,ThinkPad T430s,Hexadecimal,Single Fan,1,2,G7
+3,ThinkPad T431s,Hexadecimal,Single Fan,1,2,GH
+4,ThinkPad T450s,Hexadecimal,Single Fan,1,2,JB
+5,ThinkPad T450,Hexadecimal,Single Fan,1,2,JB
+6,ThinkPad T540p,Hexadecimal,Single Fan,1,2,GM
+7,ThinkPad T550,Hexadecimal,Single Fan,1,2,N11
+8,ThinkPad W530,Hexadecimal,Single Fan,1,2,G5
+9,ThinkPad W540,Hexadecimal,Single Fan,1,2,GN
+10,ThinkPad T520,Hexadecimal,Single Fan,1,2,BA
+11,ThinkPad X1 Carbon,Hexadecimal,Single Fan,1,2,G6
+12,ThinkPad X1,Hexadecimal,Single Fan,1,2,8M
+13,ThinkPad X1 Carbon 2nd,Hexadecimal,Single Fan,1,2,GR
+14,ThinkPad X1 Carbon 3rd,Hexadecimal,Single Fan,1,2,N14
+15,ThinkPad T440,Hexadecimal,Single Fan,1,2,GJ
+16,ThinkPad T440p,Hexadecimal,Single Fan,1,2,GL
+17,ThinkPad T440s,Hexadecimal,Single Fan,1,2,GJ
+18,ThinkPad T460,Hexadecimal,Single Fan,1,2,R06
+19,ThinkPad T460p,Hexadecimal,Single Fan,1,2,R07
+20,ThinkPad T460s,Hexadecimal,Single Fan,1,2,N1C
+21,ThinkPad T470,Hexadecimal,Single Fan,1,2,N1Q
+22,ThinkPad T470p,Hexadecimal,Single Fan,1,2,R0F
+23,ThinkPad T470p,Hexadecimal,Single Fan,1,2,N1W
+24,ThinkPad T480,Hexadecimal,Single Fan,1,2,N24
+25,ThinkPad T480s,Hexadecimal,Single Fan,1,2,N22
+26,ThinkPad T560,Hexadecimal,Single Fan,1,2,N1K
+27,ThinkPad T570,Hexadecimal,Single Fan,1,2,N1V
+28,ThinkPad T580,Hexadecimal,Single Fan,1,2,N27
+29,ThinkPad W541,Hexadecimal,Single Fan,1,2,GM
+30,ThinkPad W550s,Hexadecimal,Single Fan,1,2,N11
+31,ThinkPad X1 Carbon 4th,Hexadecimal,Single Fan,1,2,N1F
+32,ThinkPad X1 Carbon 5th,Hexadecimal,Single Fan,1,2,N1M
+33,ThinkPad X240,Hexadecimal,Single Fan,1,2,GI
+34,ThinkPad X240s,Hexadecimal,Single Fan,1,2,GI
+35,ThinkPad X260,Hexadecimal,Single Fan,1,2,R02
+36,ThinkPad X270,Hexadecimal,Single Fan,1,2,R01
+37,ThinkPad X280,Hexadecimal,Single Fan,1,2,N20
+38,ThinkPad A485,Hexadecimal,Single Fan,1,2,R0W
+39,ThinkPad A285,Hexadecimal,Single Fan,1,2,R0X
+40,ThinkPad A275,Hexadecimal,Single Fan,1,2,R0N
+41,ThinkPad Helix 2nd,Hexadecimal,Single Fan,1,2,N17
+42,ThinkPad Yoga 260,Hexadecimal,Single Fan,1,2,N1G
+43,ThinkPad P50s,Hexadecimal,Single Fan,1,2,N1K
+44,ThinkPad L480,Decimal,Single Fan,1,2,R0Q
+45,ThinkPad L580,Decimal,Single Fan,1,2,R0Q
+46,ThinkPad E475,Decimal,Single Fan,1,2,R0E
+47,ThinkPad E475,Decimal,Single Fan,1,2,R0D
+48,ThinkPad E575,Decimal,Single Fan,1,2,R0E
+49,ThinkPad L470,Hexadecimal,Single Fan,0,2,R0G
+50,ThinkPad L450,Decimal,Single Fan,0,2,JD
+51,ThinkPad L460,Hexadecimal,Single Fan,0,2,R08
+52,ThinkPad E470,Decimal,Single Fan,1,2,R0D
+53,ThinkPad E580,Decimal,Single Fan,1,2,R0P
+54,ThinkPad E485,Decimal,Single Fan,1,2,R0U
+55,ThinkPad E585,Decimal,Single Fan,1,2,R0U
+56,ThinkPad E480,Decimal,Single Fan,1,2,R0P
+57,ThinkPad P50,Hexadecimal,Dual Fan,1,2,N1E
+58,ThinkPad P51,Hexadecimal,Dual Fan,1,2,N1U
+59,ThinkPad P52,Hexadecimal,Dual Fan,1,2,N2C
+60,ThinkPad P70,Hexadecimal,Dual Fan,1,2,N1D
+61,ThinkPad P71,Hexadecimal,Dual Fan,1,2,N1T
+62,ThinkPad P72,Hexadecimal,Dual Fan,1,2,N2C
+63,ThinkPad P1,Hexadecimal,Dual Fan,1,2,N2E
+64,ThinkPad E460,Hexadecimal,Single Fan,0,2,R00
+65,ThinkPad X1 Carbon 2nd,Hexadecimal,Single Fan,1,2,GR
+66,VersaPro Type VB,Hexadecimal,Single Fan,1,2,N21
+67,VersaPro Type VB,Hexadecimal,Single Fan,1,2,N2K
+68,VersaPro Type VB,Hexadecimal,Single Fan,1,2,N2Z
+69,ThinkPad X1 Yoga 1st,Hexadecimal,Single Fan,1,2,N1F
+70,ThinkPad S1(2ndGen),Hexadecimal,Single Fan,1,2,N1G
+71,ThinkPad E560,Hexadecimal,Single Fan,0,2,R00
+72,ThinkPad P51s,Hexadecimal,Single Fan,1,2,N1V
+73,ThinkPad Yoga 370,Hexadecimal,Single Fan,1,2,R0H
+74,ThinkPad S1(3rdGen),Hexadecimal,Single Fan,1,2,R0H
+75,ThinkPad 52,Hexadecimal,Single Fan,1,2,R0C
+76,ThinkPad 52 (Gen 1),Hexadecimal,Single Fan,1,2,R0C
+77,ThinkPad 13 (Gen 1),Hexadecimal,Single Fan,1,2,R0C
+78,ThinkPad 52 2nd Gen,Hexadecimal,Single Fan,1,2,R0J
+79,ThinkPad 13 2nd Gen,Hexadecimal,Single Fan,1,2,R0J
+80,ThinkPad X1 Tablet Gen 3,Hexadecimal,Single Fan,1,2,N1Z
+81,ThinkPad 11e 4th Gen,Hexadecimal,Single Fan,1,2,R0K
+82,ThinkPad Yoga 11e 4th Gen,Hexadecimal,Single Fan,1,2,R0K
+83,ThinkPad P52s,Hexadecimal,Single Fan,1,2,N27
+84,ThinkPad X1 Carbon 6th,Hexadecimal,Single Fan,1,2,N23
+85,ThinkPad X1 Yoga 3rd,Hexadecimal,Single Fan,1,2,N25
+86,ThinkPad R480,Decimal,Single Fan,1,2,R0P
+87,ThinkPad X1 Extreme,Hexadecimal,Single Fan,1,2,N2E
+88,ThinkPad A475,Hexadecimal,Single Fan,1,2,R04
+89,ThinkPad T495,Hexadecimal,Single Fan,1,2,R12
+90,ThinkPad T495s,Hexadecimal,Single Fan,1,2,R13
+91,ThinkPad X395,Hexadecimal,Single Fan,1,2,R13
+92,ThinkPad E495,Hexadecimal,Single Fan,1,2,R11
+93,ThinkPad E595,Hexadecimal,Single Fan,1,2,R11
+94,ThinkPad T490,Hexadecimal,Single Fan,1,2,N2R
+95,ThinkPad T490,Hexadecimal,Single Fan,1,2,N2I
+96,ThinkPad T590,Hexadecimal,Single Fan,1,2,N2R
+97,ThinkPad T590,Hexadecimal,Single Fan,1,2,N2I
+98,ThinkPad P53s,Hexadecimal,Single Fan,1,2,N2R
+99,ThinkPad P53s,Hexadecimal,Single Fan,1,2,N2I
+100,ThinkPad T490s,Hexadecimal,Single Fan,1,2,N2S
+101,ThinkPad T490s,Hexadecimal,Single Fan,1,2,N2J
+102,ThinkPad X390,Hexadecimal,Single Fan,1,2,N2S
+103,ThinkPad X390,Hexadecimal,Single Fan,1,2,N2J
+104,ThinkPad X1C 5th W10DG,Hexadecimal,Single Fan,1,2,N1M
+105,ThinkPad E490,Hexadecimal,Single Fan,1,2,R0Y
+106,ThinkPad R490,Hexadecimal,Single Fan,1,2,R0Y
+107,ThinkPad E590,Hexadecimal,Single Fan,1,2,R0Y
+108,ThinkPad R590,Hexadecimal,Single Fan,1,2,R0Y
+109,ThinkPad E490s,Hexadecimal,Single Fan,1,2,R0Y
+110,ThinkPad S3,Hexadecimal,Single Fan,1,2,R0Y
+111,ThinkPad P1 Gen 2,Hexadecimal,Dual Fan,1,2,N2O
+112,ThinkPad X1 Yoga 4th,Hexadecimal,Single Fan,1,2,N2H
+113,ThinkPad X1 Yoga 4th,Hexadecimal,Single Fan,1,2,N2Q
+114,ThinkPad X1 Carbon 7th,Hexadecimal,Single Fan,1,2,N2H
+115,ThinkPad X1 Yoga 4th,Hexadecimal,Single Fan,1,2,N2Q
+116,ThinkPad X1 Extreme 2nd,Hexadecimal,Dual Fan,1,2,N2O
+117,ThinkPad P53,Hexadecimal,Dual Fan,1,2,N2N
+118,ThinkPad L490,Hexadecimal,Single Fan,1,2,R0Z
+119,ThinkPad L590,Hexadecimal,Single Fan,1,2,R0Z
+120,ThinkPad P15 Gen 1,Hexadecimal,Dual Fan,1,2,N30
+121,ThinkPad T15g Gen 1,Hexadecimal,Dual Fan,1,2,N30
+122,ThinkPad P17 Gen 1,Hexadecimal,Dual Fan,1,2,N30
+123,ThinkPad T15p Gen 1,Hexadecimal,Single Fan,1,2,N30
+124,ThinkPad P15v Gen 1,Hexadecimal,Single Fan,1,2,N30
+125,ThinkPad X1 Carbon Gen 8,Hexadecimal,Single Fan,1,2,N2W
+126,ThinkPad X1 Yoga Gen 5,Hexadecimal,Single Fan,1,2,N2W
+127,ThinkPad L14 Gen 1,Hexadecimal,Single Fan,1,2,R17
+128,ThinkPad L14 Gen 1,Hexadecimal,Single Fan,1,2,R19
+129,ThinkPad L15 Gen 1,Hexadecimal,Single Fan,1,2,R17
+130,ThinkPad L15 Gen 1,Hexadecimal,Single Fan,1,2,R19
+131,ThinkPad E15 Gen 2,Hexadecimal,Single Fan,1,2,R1A
+132,ThinkPad E15 Gen 2,Hexadecimal,Single Fan,1,2,R1E
+133,ThinkPad T14 Gen 1,Hexadecimal,Single Fan,1,2,N2X
+134,ThinkPad T14s Gen 1,Hexadecimal,Single Fan,1,2,N2Y
+135,ThinkPad X13 Gen 1,Hexadecimal,Single Fan,1,2,N2Y
+136,ThinkPad X12 Detachable Gen 1,Hexadecimal,Single Fan,1,2,R1G
+137,VersaPro Type VS,Hexadecimal,Single Fan,1,2,R1H
+138,ThinkPad E14 Gen 2,Hexadecimal,Single Fan,1,2,R1E
+139,ThinkPad X1 Nano Gen 1,Hexadecimal,Single Fan,1,2,N2T
+140,ThinkPad X1 Yoga Gen 6,Hexadecimal,Dual Fan,1,2,N32
+141,ThinkPad X1 Carbon Gen 9,Hexadecimal,Dual Fan,1,2,N32
+142,ThinkPad X1 TITANIUM Gen 1,Hexadecimal,Single Fan,1,2,N2M
+143,ThinkPad X13 Yoga Gen 2,Hexadecimal,Single Fan,1,2,N39
+144,ThinkPad L14 Gen 2,Hexadecimal,Single Fan,1,2,R1J
+145,ThinkPad L15 Gen 2,Hexadecimal,Single Fan,1,2,R1J
+146,ThinkPad T14 Gen 2i,Hexadecimal,Single Fan,1,2,N35
+147,ThinkPad X13 Gen 2i,Hexadecimal,Single Fan,1,2,N35
+148,VersaPro,Hexadecimal,Single Fan,1,2,N1Y
+149,VersaPro,Hexadecimal,Single Fan,1,2,N36
+150,ThinkPad E14 Gen 3,Hexadecimal,Single Fan,1,2,R1O
+151,ThinkPad E15 Gen 3,Hexadecimal,Single Fan,1,2,R1O
+152,ThinkPad T14 Gen 2i,Hexadecimal,Single Fan,1,2,N34
+153,ThinkPad P14s Gen 2i,Hexadecimal,Single Fan,1,2,N34
+154,ThinkPad T15 Gen 2i,Hexadecimal,Single Fan,1,2,N34
+155,ThinkPad P15s Gen 2i,Hexadecimal,Single Fan,1,2,N34
+156,ThinkPad E14 Gen 2,Hexadecimal,Single Fan,1,2,R1A
+157,ThinkPad E14 Gen 2,Hexadecimal,Single Fan,1,2,R1E
+158,ThinkPad L13 Yoga Gen 2,Hexadecimal,Single Fan,1,3,R1F
+159,ThinkPad L13 Gen 2,Hexadecimal,Single Fan,1,3,R1F
+160,ThinkPad S2 Yoga Gen 6,Hexadecimal,Single Fan,1,3,R1F
+161,ThinkPad S2 Gen 6,Hexadecimal,Single Fan,1,3,R1F
+162,ThinkPad L13 Yoga,Hexadecimal,Single Fan,1,3,R15
+163,ThinkPad L13,Hexadecimal,Single Fan,1,3,R15
+164,ThinkPad S2 Yoga 5th Gen,Hexadecimal,Single Fan,1,3,R15
+165,ThinkPad S2 5th Gen,Hexadecimal,Single Fan,1,3,R15
+166,ThinkPad L470,Hexadecimal,Single Fan,0,2,R0G
+167,ThinkPad P51s W10DG,Hexadecimal,Single Fan,1,2,N1V
+168,ThinkPad T470s W10DG,Hexadecimal,Single Fan,1,2,N1W
+169,ThinkPad P51 W10DG,Hexadecimal,Dual Fan,1,2,N1U
+170,ThinkPad T470 W10DG,Hexadecimal,Single Fan,1,2,N1Q
+171,ThinkPad X270 W10DG,Hexadecimal,Single Fan,1,2,R0I
+172,ThinkPad P14s Gen 2a,Hexadecimal,Single Fan,1,2,R1M
+173,ThinkPad T14 Gen 2a,Hexadecimal,Single Fan,1,2,R1M
+174,ThinkPad T14s Gen 2a,Hexadecimal,Single Fan,1,2,R1N
+175,ThinkPad X13 Gen 2a,Hexadecimal,Single Fan,1,2,R1N
+176,ThinkPad L13 Gen 2a,Hexadecimal,Single Fan,1,2,R1Q
+177,ThinkPad L13 Yoga Gen 2a,Hexadecimal,Single Fan,1,2,R1Q
+178,ThinkPad S2 Gen 6a,Hexadecimal,Single Fan,1,2,R1Q
+179,ThinkPad S2 Yoga Gen 6a,Hexadecimal,Single Fan,1,2,R1Q
+180,ThinkPad L14 Gen 2a,Hexadecimal,Single Fan,1,2,R1K
+181,ThinkPad L15 Gen 2a,Hexadecimal,Single Fan,1,2,R1K
+182,ThinkPad P15v Gen 2i,Hexadecimal,Single Fan,1,2,N28
+183,ThinkPad T15p Gen 2i,Hexadecimal,Single Fan,1,2,N28
+184,ThinkPad P51 Gen 2i,Hexadecimal,Dual Fan,1,2,N37
+185,ThinkPad P17 Gen 2i,Hexadecimal,Dual Fan,1,2,N37
+186,ThinkPad T15g Gen 2i,Hexadecimal,Dual Fan,1,2,N37
+187,ThinkPad P73,Hexadecimal,Dual Fan,1,2,N2N
+188,ThinkPad P1 Gen 3,Hexadecimal,Dual Fan,1,2,N2V
+189,ThinkPad P1 Gen 4i,Hexadecimal,Dual Fan,1,2,N40
+190,ThinkPad X1 Extreme Gen 3,Hexadecimal,Dual Fan,1,2,N2V
+191,ThinkPad X1 Extreme Gen 4i,Hexadecimal,Dual Fan,1,2,N40
+192,ThinkPad T15 Gen 1,Hexadecimal,Single Fan,1,2,N2X
+193,ThinkPad P14s Gen 1,Hexadecimal,Single Fan,1,2,N2X
+194,ThinkPad P15s Gen 1,Hexadecimal,Single Fan,1,2,N2X
+195,ThinkPad X1 Yoga Gen 7,Hexadecimal,Dual Fan,1,2,N3A
+196,ThinkPad X1 Carbon Gen 10,Hexadecimal,Dual Fan,1,2,N3A
+197,ThinkPad X1 Nano Gen 2,Hexadecimal,Single Fan,1,2,N3I
+198,ThinkPad T14 Gen 3,Hexadecimal,Single Fan,1,2,N3B
+199,ThinkPad T14 Gen 3,Hexadecimal,Single Fan,1,2,R23
+200,ThinkPad P14s Gen 3,Hexadecimal,Single Fan,1,2,N3B
+201,ThinkPad T16 Gen 1,Hexadecimal,Single Fan,1,2,N3B
+202,ThinkPad T16 Gen 1,Hexadecimal,Single Fan,1,2,R23
+203,ThinkPad P16s Gen 1,Hexadecimal,Single Fan,1,2,N3B
+204,ThinkPad P16s Gen 1,Hexadecimal,Single Fan,1,2,R23
+205,ThinkPad T14s Gen 3,Hexadecimal,Single Fan,1,2,N3C
+206,ThinkPad T14s Gen 3,Hexadecimal,Single Fan,1,2,R22
+207,ThinkPad X13 Gen 3,Hexadecimal,Single Fan,1,2,N3C
+208,ThinkPad X13 Gen 3,Hexadecimal,Single Fan,1,2,R22
+209,VersaPro,Hexadecimal,Single Fan,1,2,N3D
+210,ThinkPad T15p Gen 3,Hexadecimal,Single Fan,1,2,N3E
+211,ThinkPad P15v Gen 3,Hexadecimal,Single Fan,1,2,N3E
+212,ThinkPad P15v Gen 3,Hexadecimal,Single Fan,1,2,N3K
+213,ThinkPad P16 Gen 1,Hexadecimal,Dual Fan,1,2,N3F
+214,ThinkPad E15 Gen 4,Hexadecimal,Single Fan,1,2,R20
+215,ThinkPad E15 Gen 4,Hexadecimal,Single Fan,1,2,R1S
+216,ThinkPad E15 Gen 4,Hexadecimal,Single Fan,1,2,R20
+217,ThinkPad R14 Gen 4,Hexadecimal,Single Fan,1,2,R1S
+218,ThinkPad neo 14,Hexadecimal,Dual Fan,1,2,R1R
+219,ThinkPad neo 14,Hexadecimal,Dual Fan,1,2,R21
+220,ThinkPad X13 Yoga Gen 3,Hexadecimal,Single Fan,1,2,R1Z
+221,ThinkPad L13 Gen 3,Hexadecimal,Single Fan,1,2,R1T
+222,ThinkPad L13 Gen 3,Hexadecimal,Single Fan,1,2,R1U
+223,ThinkPad L13 Yoga Gen 3,Hexadecimal,Single Fan,1,2,R1T
+224,ThinkPad L13 Yoga Gen 3,Hexadecimal,Single Fan,1,2,R1U
+225,ThinkPad S2 Gen 7,Hexadecimal,Single Fan,1,2,R1T
+226,ThinkPad S2 Gen 7,Hexadecimal,Single Fan,1,2,R1U
+227,ThinkPad S2 Yoga Gen 7,Hexadecimal,Single Fan,1,2,R1T
+228,ThinkPad S2 Yoga Gen 7,Hexadecimal,Single Fan,1,2,R1U
+229,ThinkPad P1 Gen 5,Hexadecimal,Dual Fan,1,2,N3J
+230,ThinkPad X1 Extreme Gen 5,Hexadecimal,Dual Fan,1,2,N3J
+231,ThinkPad L14 Gen 3i,Hexadecimal,Single Fan,1,2,R1X
+232,ThinkPad L14 Gen 3a,Hexadecimal,Single Fan,1,2,R1Y
+233,ThinkPad L15 Gen 3i,Hexadecimal,Single Fan,1,2,R1X
+234,ThinkPad L15 Gen 3a,Hexadecimal,Single Fan,1,2,R1Y
+235,ThinkPad E14,Hexadecimal,Single Fan,1,2,R16
+236,ThinkPad E14 Gen 5,Hexadecimal,Single Fan,1,2,R2A
+237,ThinkPad E14 Gen 5,Hexadecimal,Single Fan,1,2,R2C
+238,ThinkPad L14 Gen 4,Hexadecimal,Single Fan,1,2,R24
+239,ThinkPad L14 Gen 4,Hexadecimal,Single Fan,1,2,R25
+240,ThinkPad L14 Gen 3,Hexadecimal,Single Fan,1,2,R24
+241,ThinkPad L14 Gen 3,Hexadecimal,Single Fan,1,2,R25
+242,ThinkPad L15 Gen 4,Hexadecimal,Single Fan,1,2,R26
+243,ThinkPad L15 Gen 4,Hexadecimal,Single Fan,1,2,R25
+244,ThinkPad P14s Gen 4,Hexadecimal,Single Fan,1,2,N3Q
+245,ThinkPad P14s Gen 4,Hexadecimal,Single Fan,1,2,R2F
+246,ThinkPad P1 Gen 6,Hexadecimal,Dual Fan,1,2,N3Z
+247,ThinkPad T16 Gen 2,Hexadecimal,Single Fan,1,2,N3Q
+248,ThinkPad T16 Gen 2,Hexadecimal,Single Fan,1,2,R2F
+249,ThinkPad X13 Gen 4,Hexadecimal,Dual Fan,1,2,N3O
+250,ThinkPad X13 Gen 4,Hexadecimal,Dual Fan,1,2,R29
+251,ThinkPad X13 Yoga Gen 4,Hexadecimal,Dual Fan,1,2,N3O
+252,ThinkPad X13 Yoga Gen 4,Hexadecimal,Single Fan,1,2,N3O
+253,ThinkPad X1 Carbon Gen 11,Hexadecimal,Dual Fan,1,2,N3X
+254,ThinkPad X1 Nano Gen 3,Hexadecimal,Single Fan,1,2,N3N
+255,ThinkPad X1 Yoga Gen 8,Hexadecimal,Dual Fan,1,2,N3X
+256,ThinkPad Z13 Gen 1,Hexadecimal,Dual Fan,1,2,N3G
+257,ThinkPad Z16 Gen 1,Hexadecimal,Dual Fan,1,2,N3G
+258,ThinkPad Z16 Gen 2,Hexadecimal,Dual Fan,1,2,N41
+259,ThinkPad X1 Carbon Gen 12,Hexadecimal,Dual Fan,1,1,N3Y
+260,ThinkPad X1 2-in-1 Gen 9,Hexadecimal,Dual Fan,1,1,N3Y
+262,ThinkPad T14s Gen 4,Hexadecimal,Single Fan,1,2,N3P
+263,ThinkPad T14s Gen 4,Hexadecimal,Single Fan,1,2,R2E
+264,ThinkPad P16 Gen 2,Hexadecimal,Dual Fan,1,2,N3T
+265,ThinkPad P16s Gen 2,Hexadecimal,Single Fan,1,2,N3Q
+266,ThinkPad P16s Gen 2,Hexadecimal,Single Fan,1,2,R2F
+267,ThinkPad P16v Gen 1,Hexadecimal,Dual Fan,1,2,N3U
+268,ThinkPad P16v Gen 1,Hexadecimal,Dual Fan,1,2,N3V
+269,ThinkPad X13 Gen 4 LTE2,Hexadecimal,Dual Fan,1,2,R29
+270,ThinkPad Z13 Gen 2,Hexadecimal,Dual Fan,1,2,N41
+271,ThinkPad R14 Gen 5,Hexadecimal,Single Fan,1,2,R2A
+272,ThinkPad T14 Gen 4,Hexadecimal,Single Fan,1,2,N3Q
+273,ThinkPad T14 Gen 4,Hexadecimal,Single Fan,1,2,R2F
+274,ThinkPad T15 Gen 2i,Hexadecimal,Single Fan,1,2,N3W
+275,ThinkPad E16 Gen 1,Hexadecimal,Single Fan,1,2,R2A
+276,ThinkPad E16 Gen 1,Hexadecimal,Single Fan,1,2,R2C
+277,ThinkPad L13 Gen 4,Hexadecimal,Single Fan,1,2,R27
+278,ThinkPad L13 Gen 4,Hexadecimal,Single Fan,1,2,R26
+279,ThinkPad L13 Yoga Gen 4,Hexadecimal,Single Fan,1,2,R27
+280,ThinkPad L13 Yoga Gen 4,Hexadecimal,Single Fan,1,2,R26
+281,ThinkPad S2 Gen 8,Hexadecimal,Single Fan,1,2,R27
+282,ThinkPad S2 Gen 8,Hexadecimal,Single Fan,1,2,R26
+283,ThinkPad S2 Yoga Gen 8,Hexadecimal,Single Fan,1,2,R27
+284,ThinkPad S2 Yoga Gen 8,Hexadecimal,Single Fan,1,2,R26
+285,ThinkPad L15 Gen 4,Hexadecimal,Single Fan,1,2,R24
+286,ThinkPad L14 Gen 3,Hexadecimal,Single Fan,1,2,R1X
+287,ThinkPad L14 Gen 3,Hexadecimal,Single Fan,1,2,R1Y
+289,ThinkPad E14 Gen 6,Hexadecimal,Single Fan,1,32,R2K
+290,ThinkPad E16 Gen 2,Hexadecimal,Single Fan,1,32,R2J
+291,ThinkPad E16 Gen 2,Hexadecimal,Single Fan,1,32,R2K
+292,ThinkPad L13 2-in-1 Gen 5,Hexadecimal,Single Fan,1,32,R2G
+293,ThinkPad L13 Gen 5,Hexadecimal,Single Fan,1,32,R2G
+294,ThinkPad L14 Gen 5,Hexadecimal,Single Fan,1,32,R2I
+295,ThinkPad L14 Gen 5,Hexadecimal,Single Fan,1,32,R2H
+296,ThinkPad L16 Gen 1,Hexadecimal,Single Fan,1,32,R2I
+297,ThinkPad L16 Gen 1,Hexadecimal,Single Fan,1,32,R2H
+298,ThinkPad P1 Gen 7,Hexadecimal,Dual Fan,1,2,N48
+299,ThinkPad P14s Gen 1,Hexadecimal,Single Fan,1,32,R1B
+300,ThinkPad P14s Gen 5,Hexadecimal,Single Fan,1,2,R2L
+301,ThinkPad P16s Gen 3,Hexadecimal,Dual Fan,1,2,R2D
+302,ThinkPad P16v Gen 2,Hexadecimal,Dual Fan,1,2,N44
+303,ThinkPad S2 Gen 9,Hexadecimal,Single Fan,1,32,R2G
+304,ThinkPad T14 Gen 5,Hexadecimal,Single Fan,1,2,N47
+305,ThinkPad T14 Gen 5,Hexadecimal,Single Fan,1,2,R2L
+306,ThinkPad T14s Gen 5,Hexadecimal,Single Fan,1,2,N46
+307,ThinkPad T16 Gen 3,Hexadecimal,Single Fan,1,2,N47
+308,ThinkPad X12 Detachable Gen 2,Hexadecimal,Single Fan,1,32,N43
+309,ThinkPad X13 2-in-1 Gen 5,Hexadecimal,Dual Fan,1,2,N45
+310,ThinkPad X13 2-in-1 Gen 5,Hexadecimal,Single Fan,1,2,N45
+311,ThinkPad X13 Gen 5,Hexadecimal,Dual Fan,1,2,N45
+312,ThinkPad X13 Gen 5,Hexadecimal,Single Fan,1,2,N45
+313,ThinkPad T14s Gen 6,Hexadecimal,Single Fan,1,32,R2N
+314,ThinkPad P14s Gen 5 AMD,Hexadecimal,Single Fan,1,2,R2L
+315,ThinkPad X1 Carbon Gen 13,Hexadecimal,Dual Fan,1,1,N4B
+316,ThinkPad X1 2-in-1 Gen 10,Hexadecimal,Dual Fan,1,1,N4B
+317,ThinkPad E14 Gen 7,Hexadecimal,Single Fan,1,32,R30
+318,ThinkPad R14 Gen 7,Hexadecimal,Single Fan,1,32,R30
+319,ThinkPad E16 Gen 3,Hexadecimal,Single Fan,1,32,R30
+320,ThinkPad E14 Gen 7,Hexadecimal,Single Fan,1,32,R31
+321,ThinkPad R14 Gen 7,Hexadecimal,Single Fan,1,32,R31
+322,ThinkPad E16 Gen 3,Hexadecimal,Single Fan,1,32,R31
+323,ThinkPad X9-14 Gen 1,Hexadecimal,Double Fan,1,32,N4D
+324,ThinkPad T14s Gen 6,Hexadecimal,Single Fan,1,2,N4I
+325,T14 Gen 6,Hexadecimal,Single Fan,1,2,N4H
+326,ThinkPad L13 Gen 6,Hexadecimal,Single Fan,1,32,R2R
+327,ThinkPad L13 2-in-1 Gen 6,Hexadecimal,Single Fan,1,32,R2R
+328,ThinkPad L14 Gen 6,Hexadecimal,Single Fan,1,32,R2S
+329,ThinkPad L16 Gen 2,Hexadecimal,Single Fan,1,32,R2S
+330,ThinkPad L14 Gen 6,Hexadecimal,Single Fan,1,32,R2U
+331,ThinkPad L16 Gen 2,Hexadecimal,Single Fan,1,32,R2U
+332,ThinkPad L14 Gen 6,Hexadecimal,Single Fan,1,32,R2V
+333,ThinkPad L16 Gen 2,Hexadecimal,Single Fan,1,32,R2V
+334,ThinkPad L13 Gen 6,Hexadecimal,Single Fan,1,32,R2T
+335,ThinkPad L13 2-in-1 Gen 6,Hexadecimal,Single Fan,1,32,R2T
+336,ThinkPad X9-15 Gen 1,Hexadecimal,Dual Fan,1,1,N4C
+337,ThinkPad T14 Gen 6,Hexadecimal,Single Fan,1,32,R2X
+338,ThinkPad P14s Gen 6 AMD,Hexadecimal,Single Fan,1,32,R2X
+339,ThinkPad T16 Gen 4,Hexadecimal,Single Fan,1,32,R2X
+340,ThinkPad P16s Gen 4 AMD,Hexadecimal,Single Fan,1,32,R2X
+341,ThinkPad X13 Gen 6,Hexadecimal,Single Fan,1,2,R32
+342,ThinkPad T14s Gen 6,Hexadecimal,Single Fan,1,32,R33
+343,ThinkPad P1 Gen 8,Hexadecimal,Dual Fan,1,2,N4E
+344,ThinkPad P16v Gen 3,Hexadecimal,Dual Fan,1,2,N4G
+345,ThinkPad P16 Gen 3,Hexadecimal,Dual Fan,1,2,N4F
+346,ThinkPad X1 Carbon Gen 13,Hexadecimal,Dual Fan,1,2,N4M
+347,ThinkPad X1 2-in-1 Gen 10,Hexadecimal,Dual Fan,1,2,N4M
+348,ThinkPad P14s Gen 6,Hexadecimal,Single Fan,1,2,R2X
+349,ThinkPad P16s Gen 4,Hexadecimal,Single Fan,1,2,R2X
+350,ThinkPad L13 2-in-1 Gen 2,Hexadecimal,Single Fan,1,32,R2T
+351,ThinkPad T14p Gen 3,Hexadecimal,Dual Fan,1,2,R2W
+352,ThinkPad P16s Gen 4,Hexadecimal,Dual Fan,1,2,R2W
+353,ThinkPad E14 RPL-R Gen 7,Hexadecimal,Single Fan,1,32,R2Y
+354,ThinkPad E16 RPL-R Gen 3,Hexadecimal,Single Fan,1,32,R2Y
+355,ThinkPad E14 Gen 7,Hexadecimal,Single Fan,1,32,R34
+356,ThinkPad R14s Gen 5,Hexadecimal,Single Fan,1,2,R2A
+357,ThinkPad T14p Gen 1,Hexadecimal,Dual Fan,1,2,R2B
+358,ThinkPad T14 Gen 3,Hexadecimal,Single Fan,1,2,N3M
+359,ThinkPad P14s Gen 3,Hexadecimal,Single Fan,1,2,N3M
+360,ThinkPad T16 Gen 1,Hexadecimal,Single Fan,1,2,N3M
+361,ThinkPad P16s Gen 1,Hexadecimal,Single Fan,1,2,N3M
+362,ThinkPad E14 Gen 6,Hexadecimal,Single Fan,1,32,R2J
+363,ThinkPad R14 Gen 6,Hexadecimal,Single Fan,1,32,R2J
+364,ThinkPad P14s Gen 5,Hexadecimal,Dual Fan,1,2,R2D
+365,ThinkPad E14 Gen 7,Hexadecimal,Single Fan,1,32,R2Z
+366,ThinkPad E16 Gen 3,Hexadecimal,Single Fan,1,32,R2Z
+367,ThinkPad T14s Gen 6,Hexadecimal,Single Fan,1,2,N4K
+368,ThinkPad T14s 2-in-1 Gen 1,Hexadecimal,Single Fan,1,2,N4K
+369,ThinkPad T14 Gen 6,Hexadecimal,Single Fan,1,2,N4J
+370,ThinkPad T16 Gen 4,Hexadecimal,Single Fan,1,2,N4J
+371,ThinkPad X13 Gen 6,Hexadecimal,Single Fan,1,2,N4L
+372,ThinkPad P14s Gen 6,Hexadecimal,Dual Fan,1,2,R2W
+373,ThinkPad T14 Gen 7,Hexadecimal,Single Fan,1,2,R38
+374,ThinkPad P14s Gen 7,Hexadecimal,Single Fan,1,2,R38
+375,ThinkPad P14s Gen 7 AMD,Hexadecimal,Single Fan,1,2,R38
+376,ThinkPad T16 Gen 5,Hexadecimal,Single Fan,1,2,R38
+377,ThinkPad X1 Carbon Gen 14,Hexadecimal,Dual Fan,1,1,N4O
+378,ThinkPad X1 2-in-1 Gen 11,Hexadecimal,Dual Fan,1,1,N4O
+379,ThinkPad X13 Detachable Gen 1,Hexadecimal,Dual Fan,1,2,R3I
+381,ThinkPad X9-15p Gen 1,Hexadecimal,Dual Fan,1,1,N4Q
+382,ThinkPad P1 Gen 9,Hexadecimal,Dual Fan,1,2,N4S
+383,ThinkPad T1g Gen 9,Hexadecimal,Dual Fan,1,2,N4S
+384,ThinkPad L14 Gen 7,Hexadecimal,Single Fan,1,32,R3G
+385,ThinkPad L16 Gen 3,Hexadecimal,Single Fan,1,32,R3G
+386,ThinkPad L13 Gen 7,Hexadecimal,Single Fan,1,32,R3M
+387,ThinkPad L13 2-in-1 Gen 7,Hexadecimal,Single Fan,1,32,R3M
+388,ThinkPad L14 Gen 7,Hexadecimal,Single Fan,1,32,R3N
+389,ThinkPad L16 Gen 3,Hexadecimal,Single Fan,1,32,R3N
+390,ThinkPad L14 Gen 7,Hexadecimal,Single Fan,1,32,R3E
+391,ThinkPad L16 Gen 3,Hexadecimal,Single Fan,1,32,R3E
+393,ThinkPad T14s Gen 7,Hexadecimal,Single Fan,1,2,N4U
+394,ThinkPad T14s 2-in-1 Gen 2,Hexadecimal,Single Fan,1,2,N4U
+395,ThinkPad X13 Gen 7,Hexadecimal,Single Fan,1,2,N4V
+396,ThinkPad T14 Gen 7,Hexadecimal,Single Fan,1,2,N4V
+397,ThinkPad T14 Gen 7,Hexadecimal,Single Fan,1,2,N4T
+398,ThinkPad T16 Gen 5,Hexadecimal,Single Fan,1,2,N4T
+399,ThinkPad T14p Gen 4,Hexadecimal,Dual Fan,1,2,N4W
+400,ThinkPad P14s Gen 7,Hexadecimal,Dual Fan,1,2,N4W
+401,ThinkPad P16s Gen 5,Hexadecimal,Dual Fan,1,2,N4W
+402,ThinkPad X13 Gen 7,Hexadecimal,Single Fan,1,2,R3B
+403,ThinkPad T14s Gen 7,Hexadecimal,Single Fan,1,2,R3C
+404,ThinkPad P16s Gen 5,Hexadecimal,Dual Fan,1,2,R3H
+405,ThinkPad T16s Gen 5,Hexadecimal,Single Fan,1,2,R3K
+406,ThinkPad T14 Gen 7,Hexadecimal,Single Fan,1,2,R3K
+407,ThinkPad T14s Gen 7,Hexadecimal,Single Fan,1,2,N4P
+408,ThinkPad E14 Gen 8,Hexadecimal,Single Fan,1,2,R37
+409,ThinkPad E16 Gen 4,Hexadecimal,Single Fan,1,2,R37
+410,ThinkPad X14 Gen 1,Hexadecimal,Dual Fan,1,2,R39
+411,ThinkPad E16 Gen 4,Hexadecimal,Single Fan,1,32,R3A
+412,ThinkPad E16 Gen 4,Hexadecimal,Single Fan,1,32,R35
+413,ThinkPad E14 Gen 8,Hexadecimal,Single Fan,1,32,R3A
+414,ThinkPad E14 Gen 8,Hexadecimal,Single Fan,1,32,R35
+415,ThinkPad L14p Gen 7,Hexadecimal,Single Fan,1,32,R3A
+416,ThinkPad L14p Gen 7,Hexadecimal,Single Fan,1,32,R35
