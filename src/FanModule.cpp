@@ -165,10 +165,10 @@ bool FanModule::isType3SupportedModel() const
 }
 */
 
-FanControlResult FanModule::takeControl() const
+FanControlResult FanModule::noFan() const
 {
     if (!isType3SupportedModelFn()) {
-        return writeEC(0x2F, 0x00)
+        return writeEC(0x2F, 0x00) //figured this out through guesswork, cant verifiy if disabling the fan is really ALL it does.
             ? FanControlResult::Success
             : FanControlResult::WriteFail;
     }

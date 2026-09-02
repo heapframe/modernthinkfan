@@ -1,72 +1,112 @@
 # ModernThinkFan
 
-ModernThinkFan is a Linux fan-control utility for [supported Lenovo ThinkPads.](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv)
+ModernThinkFan is a Linux fan-control utility for [supported Lenovo ThinkPads](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv).
 
-Instead of relying on Linux ACPI interfaces or hoping that the firmware exposes a usable fan-control interface, ModernThinkFan reuses Lenovo's own fan-control implementation from their Linux diagnostic software.
+Rather than reimplementing the Embedded Controller (EC) protocol, ModernThinkFan dynamically loads Lenovo's own `module_fan.so` from their Linux diagnostic software and calls its exported functions directly. The actual EC communication and model-specific behaviour are handled entirely by Lenovo's code.
 
-The program dynamically loads Lenovo's `module_fan.so` and directly calls its exported C++ functions to:
+> **Warning:** This software directly controls the ThinkPad's Embedded Controller. Preventing the EC from managing the fan can result in hardware damage during overheating. Always set the fan back to `auto` when you are done. Use at your own risk.
 
-* Detect whether the current ThinkPad supports fan-speed control
-* Communicate with the Embedded Controller (EC)
-* Read the current fan RPM
-* Set the fan to Lenovo's predefined slow, medium, high, full-speed, or automatic modes
-* Handle Lenovo's model-specific fan-control logic without reimplementing the EC protocol
-
-This means the actual EC communication and model-specific behaviour are handled by Lenovo's code rather than being reimplemented in ModernThinkFan.
-
-## How it works
-
-ModernThinkFan uses three files extracted from Lenovo's Linux diagnostic environment:
+## Usage
 
 ```text
-module_fan.so
-libsal.so
-fan_database.sqlite
+$ sudo ./modernthinkfan -h
+  ./modernthinkfan {OPTIONS}
+
+    Modern Thinkpad Fan Control
+
+  OPTIONS:
+
+      -h, --help                        Display this help menu
+      -r, --read                        Read fan speed
+      --stream                          Repeatedly read fan speed
+      -s[preset], --set=[preset]        Set Fan Speed [slow/med/high/full/auto]
+      -n, --nofan                       Stops the EC from interfering with the
+                                        fan speed/sets fanspeed to 0
+                                        (experimental)
+      --iDontCare                       Ignore EC read failures & Try set fan
+                                        speed anyways on unsupported models
+
+    Disclamer:
+    Set fan speed to auto to hand control back to the EC.
+    Preventing the EC from controlling the fan can result in hardware damage
+    during overheating
 ```
 
-`module_fan.so` contains Lenovo's fan-control implementation. ModernThinkFan loads this library at runtime with `dlopen()` and resolves the required C++ functions with `dlsym()`.
+Root privileges are required. The program will refuse to run without them.
 
-The library contains an `EmbeddedControllerComponentLinux` implementation which communicates directly with the ThinkPad's Embedded Controller. Functions such as `SetSlowRotation()`, `SetHighRotation()`, `SetFullRotation()`, and `SetAutoRotation()` are then called directly from ModernThinkFan.
-
-The accompanying `fan_database.sqlite` is used by Lenovo's software to determine whether a particular model supports fan-speed control and which model-specific control path should be used.
-
-A Qt `QCoreApplication` is also initialised because Lenovo's module uses `QCoreApplication::applicationDirPath()` to locate `fan_database.sqlite`.
-
-## Dependencies
-
-### Runtime dependencies
-
-ModernThinkFan requires:
-
-* Linux x86-64
-* Root privileges
-* Qt 5 Core
-* `libsqlite3`
-* `module_fan.so`
-* `libsal.so`
-* `fan_database.sqlite`
-
-The Lenovo libraries and database must be present in the program's working directory:
+### Read fan speed
 
 ```text
-modernthinkfan
-module_fan.so
-libsal.so
-fan_database.sqlite
+$ sudo ./modernthinkfan -r
+battery_manufacturer_date: 2024/10/26
+RPM: 0
 ```
 
-The program must currently be run from this directory because the Lenovo module is loaded using:
+### Set fan speed
 
-```cpp
-dlopen("./module_fan.so", RTLD_NOW);
+```text
+$ sudo ./modernthinkfan -s full
+battery_manufacturer_date: 2024/10/26
 ```
+
+```text
+$ sudo ./modernthinkfan -r
+battery_manufacturer_date: 2024/10/26
+RPM: 8064
+```
+
+Set the fan back to automatic control when done:
+
+```text
+$ sudo ./modernthinkfan -s auto
+```
+
+### Available presets
+
+| Preset | Description |
+|--------|-------------|
+| `slow` | Lenovo's low-speed preset |
+| `med`  | Lenovo's medium-speed preset |
+| `high` | Lenovo's high-speed preset |
+| `full` | Maximum fan speed |
+| `auto` | Hand control back to the EC |
+
+### Stream fan speed
+
+Continuously prints the current RPM with a Unix timestamp, polling every 100ms:
+
+```text
+$ sudo ./modernthinkfan --stream
+1738000000 | RPM: 3200
+1738000000 | RPM: 3200
+1738000001 | RPM: 3250
+...
+```
+
+### Disable the fan (experimental)
+
+The `-n` flag sets the fan speed to 0 and stops the EC from changing it:
+
+```text
+$ sudo ./modernthinkfan -n
+```
+
+Set the fan speed back to `auto` to hand control back to the EC.
+
+### Bypass unsupported model check
+
+The `--iDontCare` flag ignores EC read failures and allows setting the fan speed on models that are not in Lenovo's fan database:
+
+```text
+$ sudo ./modernthinkfan --iDontCare -s full
+```
+
+## Installation
 
 ### Build dependencies
 
-To compile ModernThinkFan, you need:
-
-- CMake
-- A C++ compiler with C++11 support
+- CMake (3.16+)
+- A C++ compiler with C++17 support
 - Qt 5 development headers
 
 On Fedora:
@@ -75,203 +115,59 @@ On Fedora:
 sudo dnf install cmake gcc-c++ qt5-qtbase-devel
 ```
 
-## Lenovo diagnostic files
+### Lenovo runtime files
 
-The following files were extracted from Lenovo's Linux diagnostic environment:
-
-```text
-ab2f3b8d9c187f4ad3630af080e53326373c27153506cf71de3b08d3bd55c03c  libsal.so
-
-9ceea6f128dfe8208b6df00f21b27e7dc5b75bb6e66d6fa443e78f7f7e2b334b  module_fan.so
-
-a13d1d64c8708a5852584f799a6b251d9c09736ec14ff0367d37a94965dbe0fd  fan_database.sqlite
-
-80c0da6b9c07486967ae08bd5ecd77da5d071de1845560e9fbbf2a0858138393  ldiag_4.64.5_linux.iso
-```
-
-The files can be found in the extracted diagnostic filesystem at:
+ModernThinkFan requires three proprietary files extracted from Lenovo's Linux diagnostic environment:
 
 ```text
-_ldiag_4.64.5_linux.iso.extracted/iso-root/live/_filesystem.squashfs.extracted/squashfs-root/opt/lenovo/ldiag
+module_fan.so    Lenovo's fan-control library
+libsal.so        Supporting Lenovo library
+fan_database.sqlite   Model/fan capability database
 ```
 
-The diagnostic ISO can be obtained from Lenovo's support site:
+These files must be placed in the same directory as the binary. They are not included in this repository. See [Obtaining the Lenovo files](#obtaining-the-lenovo-files) for extraction instructions.
 
-[Lenovo ThinkPad X260 Diagnostics](https://pcsupport.lenovo.com/gb/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x260/downloads/ds025448?category=Diagnostic)
-
-The X260 is the model selected on the download page, although the `fan_database.sqlite` bundled with the diagnostic software contains entries for many different Lenovo models, suggesting that the fan module is intended to be shared across multiple ThinkPad generations.
-
-The ISO can be extracted with:
-
-```bash
-binwalk -e ldiag_4.64.5_linux.iso
-cd _ldiag_4.64.5_linux.iso.extracted/iso-root/live
-unsquashfs -d ldiag filesystem.squashfs opt/lenovo/ldiag
-cd ldiag/opt/lenovo/ldiag
-```
-
-The exact versions of `module_fan.so` and `libsal.so` matter because ModernThinkFan resolves Lenovo's C++ functions using their mangled symbol names. Different versions of the module may therefore require the symbol mappings to be updated.
-
-## Supported devices
-
-ModernThinkFan does not guarantee support for every ThinkPad.
-
-A CSV version of Lenovo's fan database is included as [supportedDevices.csv](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv).
-
-This is provided as a convenient way to check whether your ThinkPad appears in Lenovo's database before running ModernThinkFan.
-
-The CSV is **not required for program execution and is not a substitute**. The actual `fan_database.sqlite` is required because Lenovo's `module_fan.so` queries it at runtime.
-
-## Installation
-
-Clone the repository and enter the project directory:
+### Build
 
 ```bash
 git clone https://github.com/heapframe/modernthinkfan
 cd modernthinkfan
-```
-
-Install the build dependencies:
-
-```bash
-sudo dnf install cmake gcc-c++ qt5-qtbase-devel
-```
-
-Make sure the Lenovo runtime files are present:
-
-```text
-libsal.so
-module_fan.so
-fan_database.sqlite
-```
-
-Then configure and build:
-
-```bash
 cmake -B build
 cmake --build build
-```
-
-The resulting binary will be:
-
-```text
-build/modernthinkfan
-```
-
-For convenience, you can copy it alongside the Lenovo runtime files:
-
-```bash
 cp build/modernthinkfan .
 ```
 
-The directory should then look approximately like:
+The working directory should then contain:
 
 ```text
-modernthinkfan
+modernthinkfan/
 ├── fan_database.sqlite
 ├── libsal.so
 ├── module_fan.so
 └── modernthinkfan
 ```
 
-## Usage
+The program must be run from this directory because the Lenovo module is loaded with `dlopen("./module_fan.so", RTLD_NOW)`.
 
-Display the help menu:
+## Supported devices
 
-```text
-➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -h
+ModernThinkFan does not guarantee support for every ThinkPad. Support depends on whether the model appears in Lenovo's `fan_database.sqlite`.
 
-  ./modernthinkfan {OPTIONS}
+A CSV export of the database is included as [supportedDevices.csv](https://github.com/heapframe/modernthinkfan/blob/master/supportedDevices.csv) for reference. The CSV is **not used at runtime**; the actual `fan_database.sqlite` is required because `module_fan.so` queries it directly.
 
-    Modern Thinkpad Fan Control
+## How it works
 
-  OPTIONS:
+ModernThinkFan loads `module_fan.so` at runtime with `dlopen()` and resolves the required C++ functions by their mangled symbol names using `dlsym()`. It then constructs an `EmbeddedControllerComponentLinux` instance in-place and calls Lenovo's own methods (`SetSlowRotation`, `SetFullRotation`, `GetRotationSpeed`, etc.) to communicate with the EC.
 
-      -h, --help                        Display this help menu
+The accompanying `fan_database.sqlite` is queried by Lenovo's code to determine whether a model supports fan-speed control and which control path to use. A Qt `QCoreApplication` is initialised because Lenovo's module uses `QCoreApplication::applicationDirPath()` to locate this database.
 
-      -r, --read                        Read fan speed
+### Resolved symbols
 
-      -s[preset], --set=[preset]        Set Fan Speed [slow/med/high/full/auto]
-```
-
-### Read fan speed
-
-```text
-➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -r
-
-battery_manufacturer_date: 2024/10/26
-Fan controllable: 1
-GetRotationSpeed result: 2
-RPM: 0
-```
-
-### Set full speed
-
-```text
-➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -s full
-
-battery_manufacturer_date: 2024/10/26
-```
-
-The fan can then be checked again:
-
-```text
-➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -r
-
-battery_manufacturer_date: 2024/10/26
-Fan controllable: 1
-GetRotationSpeed result: 2
-RPM: 8064
-```
-
-### Return to automatic control
-
-```text
-➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -s auto
-
-battery_manufacturer_date: 2024/10/26
-```
-
-Then:
-
-```text
-➜  modernthinkfan git:(master) ✗ sudo ./modernthinkfan -r
-
-battery_manufacturer_date: 2024/10/26
-Fan controllable: 1
-GetRotationSpeed result: 2
-RPM: 0
-```
-
-Available presets are:
-
-```text
-slow
-med
-high
-full
-auto
-```
-
-## Why does `battery_manufacturer_date` appear every time?
-
-This output originates from Lenovo's `module_fan.so`, not ModernThinkFan itself.
-
-It appears to be produced by Lenovo's internal initialisation code when the embedded controller component is constructed. Removing it would require modifying or intercepting Lenovo's module rather than changing the ModernThinkFan code.
-
-## Why won't you post the required libraries and database directly here?
-
-Not too sure on its distribution rules, so I'd rather just play it safe.
-
-
-## Function hooking
-
-ModernThinkFan does not reimplement Lenovo's EC communication.
-
-Instead, it resolves the required C++ symbols directly from `module_fan.so`:
+The following symbols are resolved from `module_fan.so`:
 
 ```text
 FanComponentManager::IsFanSpeedControllableModel()
+FanComponentManager::IsType3SupportedModel()
 EmbeddedControllerComponentLinux::EmbeddedControllerComponentLinux()
 EmbeddedControllerComponentLinux::~EmbeddedControllerComponentLinux()
 EmbeddedControllerComponent::GetRotationSpeed()
@@ -280,38 +176,55 @@ EmbeddedControllerComponent::SetMediumRotation()
 EmbeddedControllerComponent::SetHighRotation()
 EmbeddedControllerComponent::SetFullRotation()
 EmbeddedControllerComponent::SetAutoRotation()
+EmbeddedControllerComponent::WriteFanControlBit4()
+EmbeddedControllerComponent::ReadFanControlStatus()
+EmbeddedControllerComponent::WriteToEC()
 ```
 
-The symbol names are C++ mangled names and are therefore tied to the specific `module_fan.so` build being used.
+Because these are C++ mangled names, they are tied to a specific build of `module_fan.so`. A different version of the library may export different symbols and would require the mappings to be updated.
 
-The current implementation was developed against:
+## Obtaining the Lenovo files
+
+The required files can be extracted from Lenovo's Linux diagnostic ISO, available from Lenovo's support site:
+
+[Lenovo ThinkPad X260 Diagnostics](https://pcsupport.lenovo.com/gb/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x260/downloads/ds025448?category=Diagnostic)
+
+The X260 is the model selected on the download page, but the bundled `fan_database.sqlite` contains entries for many ThinkPad generations.
+
+Extract the ISO:
+
+```bash
+binwalk -e ldiag_4.64.5_linux.iso
+cd _ldiag_4.64.5_linux.iso.extracted/iso-root/live
+unsquashfs -d ldiag filesystem.squashfs opt/lenovo/ldiag
+cd ldiag/opt/lenovo/ldiag
+```
+
+Copy `module_fan.so`, `libsal.so`, and `fan_database.sqlite` into the ModernThinkFan directory.
+
+### Expected file hashes
 
 ```text
-module_fan.so
-SHA256: 9ceea6f128dfe8208b6df00f21b27e7dc5b75bb6e66d6fa443e78f7f7e2b334b
-
-libsal.so
-SHA256: ab2f3b8d9c187f4ad3630af080e53326373c27153506cf71de3b08d3bd55c03c
+ab2f3b8d9c187f4ad3630af080e53326373c27153506cf71de3b08d3bd55c03c  libsal.so
+9ceea6f128dfe8208b6df00f21b27e7dc5b75bb6e66d6fa443e78f7f7e2b334b  module_fan.so
+a13d1d64c8708a5852584f799a6b251d9c09736ec14ff0367d37a94965dbe0fd  fan_database.sqlite
+80c0da6b9c07486967ae08bd5ecd77da5d071de1845560e9fbbf2a0858138393  ldiag_4.64.5_linux.iso
 ```
 
-If Lenovo releases a different version of the diagnostic module, the exported symbols and ABI should be checked before using it with ModernThinkFan.
+### Why aren't the Lenovo files included in this repository?
 
-## Root privileges
+Not too sure on the distribution rules, so I'd rather just play it safe.
 
-Root privileges are required because Lenovo's Linux EC implementation performs direct I/O operations against the Embedded Controller.
+## FAQ
 
-Running without root will result in:
+### Why does `battery_manufacturer_date` appear in the output?
 
-```text
-Root permissions are required as this program works with the EC.
-```
+This comes from Lenovo's `module_fan.so`, not from ModernThinkFan. It is produced by Lenovo's internal initialisation code when the EC component is constructed. Suppressing it would require modifying or intercepting Lenovo's module.
 
-ModernThinkFan intentionally refuses to continue without root privileges.
+### Why are root privileges required?
 
-## Warning
+Lenovo's EC implementation performs direct I/O operations against the Embedded Controller, which requires root access. ModernThinkFan will refuse to run without it.
 
-This software directly controls the ThinkPad's Embedded Controller through Lenovo's diagnostic implementation.
+## License
 
-Incorrect EC commands can potentially cause undesirable hardware behaviour. The predefined fan presets are taken directly from Lenovo's own implementation, but this project is still using that implementation outside of its original diagnostic environment.
-
-Use it at your own risk.
+[GPL-3.0](LICENSE)

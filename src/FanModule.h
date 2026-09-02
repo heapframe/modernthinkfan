@@ -22,7 +22,8 @@ std::ostream& operator<<(std::ostream& os, FanReadResult result);
 enum class FanControlResult {
     ReadFail,
     WriteFail,
-    Success
+    Success,
+    WrongDevice
 };
 std::ostream& operator<<(std::ostream& os, FanControlResult result);
 
@@ -50,7 +51,7 @@ public:
     int setHigh() const;
     bool setFull() const;
     bool setAuto() const;
-    FanControlResult takeControl() const;
+    FanControlResult noFan() const;
     //bool FanModule::isType3SupportedModel() const;
     int writeEC(unsigned short address, unsigned char value) const;
 

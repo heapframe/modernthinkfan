@@ -10,13 +10,14 @@
 
 int main(int argc, char** argv)
 {
-    args::ArgumentParser parser("Modern Thinkpad Fan Control", "Disclamer: Set fan speed to auto to hand control back to the EC.\n\nPreventing the EC from controlling the fan can result in hardware damage during overheating");
+    args::ArgumentParser parser("Modern Thinkpad Fan Control", "Disclamer:\nSet fan speed to auto to hand control back to the EC.\n\n\
+Preventing the EC from controlling the fan can result in hardware damage during overheating");
     args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
 
     args::Flag readFan(parser, "read", "Read fan speed", {'r', "read"});
     args::Flag streamFan(parser, "stream", "Repeatedly read fan speed", {"stream"});
     args::ValueFlag<std::string> setFan(parser, "preset", "Set Fan Speed [slow/med/high/full/auto]", {'s', "set"});
-    args::Flag takeControl(parser, "takecontrol", "Stops the EC from interfering with the fan speed", {'t', "takecontrol"});
+    args::Flag noFan(parser, "nofan", "Stops the EC from interfering with the fan speed/sets fanspeed to 0 (experimental)", {'n', "nofan"});
 
     args::Flag iDontCare(parser, "iDontCare", "Ignore EC read failures & Try set fan speed anyways on unsupported models", {"iDontCare"});
 
@@ -68,10 +69,10 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    if (takeControl) {
-        FanControlResult result = fan.takeControl();
+    if (noFan) {
+        FanControlResult result = fan.noFan();
         if (result != FanControlResult::Success) {
-            std::cout << "GetRotationSpeed result: " << result  << std::endl;
+            std::cerr << "Error: " << result  << std::endl;
         }
     }
 
