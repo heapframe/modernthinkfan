@@ -6,6 +6,7 @@
 #include <chrono>
 #include "args.hxx"
 #include "FanModule.h"
+#include <filesystem>
 
 int main(int argc, char** argv)
 {
@@ -39,6 +40,18 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    const std::array<std::string, 3> requiredFiles = {
+        "fan_database.sqlite",
+        "libsal.so",
+        "module_fan.so"
+    };
+
+    for (const auto& file : requiredFiles) {
+        if (!std::filesystem::exists(file)) {
+            std::cerr << "Missing required file: " << file << std::endl;
+            return 1;
+        }
+    }
 
     if (geteuid() != 0) {
         std::cout << "Root permissions are required as this program works with the EC." << std::endl;
